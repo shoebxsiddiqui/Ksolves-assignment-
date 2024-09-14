@@ -1,0 +1,16 @@
+// Create Book
+export const CREATE_BOOK_REQUEST = "CREATE_BOOK_REQUEST";
+export const CREATE_BOOK_SUCCESS = "CREATE_BOOK_SUCCESS";
+export const CREATE_BOOK_FAIL = "CREATE_BOOK_FAIL";
+
+// Get All Books
+export const GET_BOOKS_REQUEST = "GET_BOOKS_REQUEST";
+export const GET_BOOKS_SUCCESS = "GET_BOOKS_SUCCESS";
+export const GET_BOOKS_FAIL = "GET_BOOKS_FAIL";
+
+// Get Book By Id
+export const GET_BOOK_REQUEST = "GET_BOOK_REQUEST";
+export const GET_BOOK_SUCCESS = "GET_BOOK_SUCCESS";
+export const GET_BOOK_FAIL = "GET_BOOK_FAIL";
+
+export const CLEAR_ERRORS = "CLEAR_ERRORS";

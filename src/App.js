@@ -7,10 +7,23 @@ import store from "./store.js";
 import { useEffect } from "react";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { getClasses } from "./Actions/classAction.js";
+import { getBooks } from "./Actions/bookActions.js";
+import ProtectedRoute from "./Components/Routes/ProtectedRoute.js";
+import Books from "./Components/Books/Books.js";
+import Chapters from "./Components/Chapters/Chapters.js";
+import Lectures from "./Components/Lectures/Lectures.js";
+import Player from "./Components/Player/Player.js";
+import { getChapters } from "./Actions/chapterActions.js";
+import { useSelector } from "react-redux";
 
 function App() {
+  const { isAuthenticated } = useSelector((state) => state.user);
   useEffect(() => {
     store.dispatch(loadUser());
+    store.dispatch(getClasses());
+    store.dispatch(getBooks());
+    store.dispatch(getChapters());
   }, []);
 
   return (
@@ -26,8 +39,16 @@ function App() {
         <div className="bg-gray-200 !min-w-[1080px]">
           <Header />
           <Routes>
-            <Route exact path="/" element={<Body />} />
-            {/* <Route path="/cart" element={<Cart />} /> */}
+            <Route path="/" element={<Body />} />
+            {isAuthenticated && (
+              <>
+                <Route path="/books" element={<Books />} />
+                <Route path="/chapters" element={<Chapters />} />
+                <Route path="/lectures" element={<Lectures />} />
+                <Route exact path="/vedio" element={<Player />} />
+              </>
+            )}
+            <Route path="*" element={<div>Login First</div>} />
           </Routes>
           <Footer />
         </div>
